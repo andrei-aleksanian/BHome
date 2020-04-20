@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9d7ce966-2aa7-4103-971f-4d81972f57c6" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="untitled1" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1aR2uwoD4Gmk3khZsqK6dORCyn4" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Andrei\WebstormProjects\BHome\src\Containers" />
+      <recent name="C:\Users\Andrei\WebstormProjects\BHome\src\Components\UI" />
+      <recent name="C:\Users\Andrei\WebstormProjects\untitled1\src\Components\UI\HoverNavigation" />
+      <recent name="C:\Users\Andrei\WebstormProjects\untitled1\src\Containers" />
+      <recent name="C:\Users\Andrei\WebstormProjects\untitled1\src\Components\UI\Header\Hamburger" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.npm start">
+    <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <configuration name="npm start" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/../BHome/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9d7ce966-2aa7-4103-971f-4d81972f57c6" name="Default Changelist" comment="" />
+      <created>1586684311986</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1586684311986</updated>
+      <workItem from="1586684314170" duration="61660000" />
+      <workItem from="1586890730797" duration="9305000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="409" y="119" key="#npm_start" timestamp="1586890868997">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state x="409" y="119" key="#npm_start/0.0.1368.872@0.0.1368.872" timestamp="1586890868997" />
+    <state width="1348" height="204" key="GridCell.Tab.0.bottom" timestamp="1586890899814">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state width="1348" height="204" key="GridCell.Tab.0.bottom/0.0.1368.872@0.0.1368.872" timestamp="1586890899814" />
+    <state width="1348" height="204" key="GridCell.Tab.0.center" timestamp="1586890899814">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state width="1348" height="204" key="GridCell.Tab.0.center/0.0.1368.872@0.0.1368.872" timestamp="1586890899814" />
+    <state width="1348" height="204" key="GridCell.Tab.0.left" timestamp="1586890899814">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state width="1348" height="204" key="GridCell.Tab.0.left/0.0.1368.872@0.0.1368.872" timestamp="1586890899814" />
+    <state width="1348" height="204" key="GridCell.Tab.0.right" timestamp="1586890899814">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state width="1348" height="204" key="GridCell.Tab.0.right/0.0.1368.872@0.0.1368.872" timestamp="1586890899814" />
+    <state x="402" y="245" key="jetbrains.nodejs.interpreters-dialog" timestamp="1586868796003">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state x="402" y="245" key="jetbrains.nodejs.interpreters-dialog/0.0.1368.872@0.0.1368.872" timestamp="1586868796003" />
+    <state x="684" y="202" key="run.anything.popup" timestamp="1586689347688">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state x="684" y="202" key="run.anything.popup/0.0.1368.872@0.0.1368.872" timestamp="1586689347688" />
+  </component>
+</project>

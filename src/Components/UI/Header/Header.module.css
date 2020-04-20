@@ -1,0 +1,38 @@
+.Header{
+    display: flex;
+    margin-bottom: 2%;
+    padding: 0 2%;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    font-size: 20px;
+    box-shadow: 0 0 5px 0 rgba(51,51,51,1);
+
+    background-color: #333;
+    color: #fff;
+}
+
+.Logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 44px;
+    font-family: 'Baloo Paaji 2', cursive;
+}
+
+.ImgLogo{
+    width: 36px;
+    height: 36px;
+}
+
+a{
+    text-decoration: none;
+}
+
+@media screen and (min-width:1000px){
+    .Header{
+        padding: 0 10%;
+    }
+}
+

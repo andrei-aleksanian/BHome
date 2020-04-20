@@ -1,0 +1,53 @@
+.HoverMessage{
+    position: fixed;
+    top: 10vh;
+    margin: 0 auto;
+    background-color: #fff;
+    font-size: 24px;
+    z-index: 10;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    min-width: 50%;
+    padding: 2% 10% 5% 10%;
+    transition: opacity 0.3s;
+    border-radius: 2px;
+}
+
+.summaryList{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+.summaryList ul{
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-flow: column;
+    width: auto;
+    justify-content: flex-start;
+}
+
+.total{
+    margin-top: 10%;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+@media screen and (min-width:1000px) {
+    .HoverMessage{
+        position: fixed;
+        top: 20vh;
+        min-width: 30%;
+        padding: 2% 5% 5% 5%;
+        transition: opacity 0.3s;
+    }
+
+}

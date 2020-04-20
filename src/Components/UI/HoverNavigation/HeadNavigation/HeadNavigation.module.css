@@ -1,0 +1,39 @@
+.HeadNavigation{
+    z-index: 20;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-flow: column;
+    background-color: #333;
+    color: #fff;
+    width: 100%;
+    transition: all 0.5s;
+}
+
+.HeadNavigation ul{
+    list-style: none;
+    padding: 0 5%;
+}
+
+.HeadNavigation ul li{
+    height: 40px;
+    border: none;
+}
+
+.HeadNavigation ul li a{
+    display: block;
+    margin: 1%;
+    padding: 0;
+    text-decoration: none;
+    color: #bbb;
+    height: 100%;
+    font-size: 20px;
+    /*background-color: red;*/
+}
+
+.HeadNavigation ul li a.active,
+.HeadNavigation ul li a:active,
+.HeadNavigation ul li a:hover{
+    color: #fff;
+}

@@ -1,0 +1,55 @@
+*{
+    color: #222;
+}
+
+.Wrapper{
+    width: 80%;
+    margin: 0 auto;
+
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+
+}
+
+.BurgerImage{
+    width: 70%;
+    box-shadow: 30px 30px 50px 0px rgba(187,187,187,1);
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.BurgerImage:hover{
+    box-shadow: 10px 10px 25px 0px rgba(187,187,187,1);
+}
+
+.Register{
+    box-shadow: 10px 10px 25px 0px rgba(187,187,187,1);
+    z-index: 10;
+}
+
+h1{
+    font-family: 'Baloo Paaji 2', cursive;
+    margin: 0 0 1% 0;
+    font-size: 40px;
+}
+
+@media screen and (max-width: 1000px){
+    .Wrapper{
+        width: 95%;
+    }
+
+    .BurgerImage{
+        width: 100%;
+    }
+
+    .Register{
+        box-shadow: 10px 10px 25px 0px rgba(187,187,187,1);
+        z-index: 0;
+    }
+
+    h1{
+        font-size: 30px;
+        text-align: center;
+    }
+}

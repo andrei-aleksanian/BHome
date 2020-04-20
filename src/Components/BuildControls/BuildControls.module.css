@@ -1,0 +1,21 @@
+.BuildControls{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 100%;
+    box-shadow: 0 0 5px 0 rgba(231,166,26,1);
+
+}
+
+.Total{
+    padding: 2% 0;
+    font-size: 30px;
+}
+
+
+@media screen and (min-width: 1000px){
+    .Total{
+        padding: 1% 0;
+        font-size: 30px;
+    }
+}

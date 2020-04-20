@@ -1,0 +1,27 @@
+.footer{
+    margin-top: 10%;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+footer p{
+    color: #fff;
+    cursor: pointer;
+}
+
+main{
+    min-height: 95vh;
+}
+
+@media screen and (min-width: 1000px){
+    .footer{
+        margin-top: 2%;
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        padding: 0 20%;
+    }
+
+}

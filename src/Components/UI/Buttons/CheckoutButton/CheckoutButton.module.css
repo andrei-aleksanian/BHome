@@ -1,0 +1,59 @@
+.CheckoutButton{
+    margin-top: 5%;
+    font-size: 30px;
+    font-family: Bahnschrift, sans-serif;
+    height: 70px;
+    width: calc(70px * 2.5);
+
+    border: orange 2px solid;
+    color: white;
+    background-color: orange;
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.inactiveCheckoutButton{
+    margin-top: 5%;
+    background-color: rgba(0,0,0,0.2);
+    border: grey 2px solid;
+    font-size: 30px;
+    font-family: Bahnschrift, sans-serif;
+    height: 70px;
+    width: calc(70px * 2.5);
+
+    color: white;
+    border-radius: 2px;
+    outline: none;
+    cursor: auto;
+    transition: all 0.2s ease-in-out;
+
+}
+
+.CheckoutButton:hover{
+    border:none;
+    color: white;
+    background-color: orange;
+}
+
+@media screen and (min-width: 1000px){
+    .CheckoutButton{
+        margin-top: 20px;
+        color: #333;
+        background-color: white;
+        border: orange 2px solid;
+    }
+    .CheckoutButton:hover{
+        box-shadow: 0 0 20px 0 rgba(199,143,22,1);
+
+    }
+
+    .inactiveCheckoutButton{
+        margin-top: 20px;
+        color: #333;
+        background-color: rgba(0,0,0,0.2);
+        border: rgba(0,0,0,0.2) 2px solid;
+        box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+    }
+}

@@ -1,0 +1,53 @@
+.allOrders{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.order{
+    padding: 2%;
+    margin: 2% 0;
+    box-shadow: 0 0 5px 0 rgba(136,136,136,1);
+    border-radius: 2px;
+}
+
+.order ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.order ul li{
+    line-height: 1.5em;
+}
+
+.order ul li span{
+    font-family: sans-serif;
+}
+
+.order ul li span.total{
+    font-weight: bold;
+}
+
+.ingredients{
+    display: flex;
+}
+
+.ingredients ul{
+    margin-left: 1%;
+}
+
+
+@media screen and (max-width: 1000px){
+    .allOrders{
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .allOrders h1{
+        margin-left: 2%;
+    }
+
+    .order{
+        margin: 5% 0;
+    }
+}

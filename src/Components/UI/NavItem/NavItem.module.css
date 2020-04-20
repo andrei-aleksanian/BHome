@@ -1,0 +1,30 @@
+.NavItem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    transition: all 0.3s;
+    box-sizing: border-box;
+}
+
+.NavItem a{
+    text-decoration: none;
+    color: #bbb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 15px;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    border-bottom: 2px solid transparent;
+}
+
+.NavItem a:active,
+.NavItem a.active,
+.NavItem a:hover{
+    color: #fff;
+    cursor: pointer;
+    border-bottom: orange 2px solid;
+
+}

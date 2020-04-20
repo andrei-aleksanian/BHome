@@ -1,0 +1,12 @@
+.BurgerImage{
+    width: 50vh;
+    height: 39vh;
+    text-align: center;
+    overflow: scroll;
+}
+
+@media screen and (min-width: 1000px){
+    .BurgerImage{
+        overflow: auto;
+    }
+}
