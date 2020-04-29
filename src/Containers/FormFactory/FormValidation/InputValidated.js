@@ -1,24 +1,21 @@
-import React, {Component} from 'react';
+import React from 'react';
 import classes from "./InputValidated.module.css";
 
-class InputValidated extends Component{
+const InputValidated = props => {
+    let inputElement;
 
-    render(){
-        let inputElement;
-
-        switch (this.props.inputType) {
-            case("input"):
-                inputElement = <input {...this.props.elementConfig} onChange={this.props.changed} className={this.props.touched ? this.props.valid ? null : classes.invalid : null}/>;
-                break;
-            case("textarea"):
-                inputElement = <textarea {...this.props}/>;
-                break;
-            default:
-                inputElement = <input {...this.props}/>;
-        }
-
-        return inputElement;
+    switch (props.inputType) {
+        case("input"):
+            inputElement = <input {...props.elementConfig} onChange={props.changed} className={props.touched ? props.valid ? null : classes.invalid : null}/>;
+            break;
+        case("textarea"):
+            inputElement = <textarea {...props}/>;
+            break;
+        default:
+            inputElement = <input {...props}/>;
     }
-}
+
+    return inputElement;
+};
 
 export default InputValidated;

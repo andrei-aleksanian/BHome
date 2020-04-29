@@ -1,24 +1,19 @@
-import React, {Component} from 'react';
+import React, {useState, useEffect} from 'react';
 import classes from "./Form.module.css";
 import Input from "./FormValidation/InputValidated";
 import {Link} from "react-router-dom";
-import {logInFailed} from "../../redux/actions/AuthActions";
 
-class Form extends Component {
-    state = {
-        inputFields: null,
-        formIsValid: true,
-        formSubmitted: false
-    };
+const Form = props => {
+    const [inputFields, setInputFields] = useState(null);
+    const [formIsValid, setFormIsValid] = useState(true);
+    const [formSubmitted, setFormSubmitted] = useState(false);
 
-    componentDidMount() {
-        this.setState({
-            inputFields: this.props.inputFields
-        });
-    }
+    useEffect(() => {
+        setInputFields(props.inputFields);
+    }, [props.inputFields]);
 
-    validateInputHandler = (inputName, value) => {
-        const regex = this.state.inputFields[inputName].validity.regex;
+    const validateInputHandler = (inputName, value) => {
+        const regex = inputFields[inputName].validity.regex;
 
         if (regex){
             return regex.test(value.toLowerCase());
@@ -27,16 +22,16 @@ class Form extends Component {
         }
     };
 
-    isFormValid = (currentInputName= "", thatCurrentValid = false) => {
-        let inputFields = Object.keys(this.state.inputFields);
+    const isFormValid = (currentInputName= "", thatCurrentValid = false) => {
+        let localInputFields = Object.keys(inputFields);
         let formIsValid = true;
         let validityArray = [];
-        inputFields.forEach(inputField => {
+        localInputFields.forEach(inputField => {
             // check real time valid if we are updating the form after it has already been submitted
             if (currentInputName === inputField){
                 validityArray.push(thatCurrentValid);
             } else {
-                validityArray.push(this.state.inputFields[inputField].valid);
+                validityArray.push(inputFields[inputField].valid);
             }
         });
 
@@ -48,95 +43,90 @@ class Form extends Component {
         return formIsValid;
     };
 
-    onChangeHandler = (e, inputName) => {
+    const onChangeHandler = (e, inputName) => {
         let formIsValid = true;
 
-        let inputFields = {...this.state.inputFields};
-        inputFields[inputName].value = e.target.value.trim();
-        let valid = this.validateInputHandler(inputName, e.target.value.trim());
-        inputFields[inputName].valid = valid;
-        inputFields[inputName].touched = true;
+        let localInputFields = {...inputFields};
+        localInputFields[inputName].value = e.target.value.trim();
+        let valid = validateInputHandler(inputName, e.target.value.trim());
+        localInputFields[inputName].valid = valid;
+        localInputFields[inputName].touched = true;
 
-        if (this.state.formSubmitted){
-            formIsValid = this.isFormValid(inputName, valid);
+        if (formSubmitted){
+            formIsValid = isFormValid(inputName, valid);
         }
 
-        this.setState({
-            inputFields: {...inputFields},
-            formIsValid: formIsValid
-        });
+        setInputFields({...localInputFields});
+        setFormIsValid(formIsValid);
     };
 
-    submit = (e) => {
+    const submit = (e) => {
         e.preventDefault();
-        const formIsValid = this.isFormValid();
-        this.props.onSubmit(e, formIsValid);
-        this.setState({
-            formSubmitted: true,
-            formIsValid: formIsValid
-        });
+        const formIsValid = isFormValid();
+        props.onSubmit(e, formIsValid);
+
+        setFormIsValid(formIsValid);
+        setFormSubmitted(true);
     };
 
-    render(){
-        let swappingButton;
-        let wrapper_classes = [];
-        let logInFailed;
-        wrapper_classes.push(classes.Wrapper);
+    let swappingButton;
+    let wrapper_classes = [];
+    let logInFailed;
+    wrapper_classes.push(classes.Wrapper);
 
-        if(this.props.layout === "in-div"){
-            wrapper_classes.push(classes.fullWidth)
-        }
-
-        if(this.props.title === "Sign Up"){
-            swappingButton = <Link to={"/log-in"}>Already have an account?</Link>
-        } else if(this.props.title === "Log In"){
-            swappingButton = <Link to={"/sign-up"}>Here first time? Register!</Link>
-        } else {
-            swappingButton = null;
-        }
-
-        let formInvalidMessage;
-
-        if (!this.state.formIsValid){
-            formInvalidMessage = <p className={classes.invalidForm}>Please fill in all the fields correctly</p>;
-        } else {
-            formInvalidMessage = null;
-        }
-
-        if (this.props.logInFailed){
-            logInFailed = <p className={classes.error}>Login failed, please try again.</p>;
-        }else{
-            logInFailed = null;
-        }
-
-        let formElements = [];
-        for (let key in this.state.inputFields){
-            formElements.push({
-                id: key,
-                config: this.state.inputFields[key]
-            })
-        }
-
-        return (
-            <div className={wrapper_classes.join(" ")}>
-                <h1>{this.props.title}</h1>
-                <form className={classes.form} onSubmit={this.submit}>
-                    {formElements.map(el => {
-                        return <Input key={el.config.elementConfig.name}
-                                      inputType={el.config.inputType}
-                                      elementConfig={el.config.elementConfig}
-                                      changed={(e)=>{this.onChangeHandler(e, el.id)}}
-                                      valid={el.config.valid}
-                                      touched={el.config.touched}
-                                      value={el.config.value}
-                        />;
-                    })}
-                    <div><button>Submit</button> {formInvalidMessage}</div>
-                    {swappingButton} {logInFailed}
-                </form>
-            </div>
-        );
+    if(props.layout === "in-div"){
+        wrapper_classes.push(classes.fullWidth)
     }
-}
+
+    if(props.title === "Sign Up"){
+        swappingButton = <Link to={"/log-in"}>Already have an account?</Link>
+    } else if(props.title === "Log In"){
+        swappingButton = <Link to={"/sign-up"}>Here first time? Register!</Link>
+    } else {
+        swappingButton = null;
+    }
+
+    let formInvalidMessage;
+
+    if (!formIsValid){
+        formInvalidMessage = <p className={classes.invalidForm}>Please fill in all the fields correctly</p>;
+    } else {
+        formInvalidMessage = null;
+    }
+
+    if (props.logInFailed){
+        logInFailed = <p className={classes.error}>Login failed, please try again.</p>;
+    }else{
+        logInFailed = null;
+    }
+
+    let formElements = [];
+    for (let key in inputFields){
+        formElements.push({
+            id: key,
+            config: inputFields[key]
+        })
+    }
+
+    return (
+        <div className={wrapper_classes.join(" ")}>
+            <h1>{props.title}</h1>
+            <form className={classes.form} onSubmit={submit}>
+                {formElements.map(el => {
+                    return <Input key={el.config.elementConfig.name}
+                                  inputType={el.config.inputType}
+                                  elementConfig={el.config.elementConfig}
+                                  changed={(e)=>{onChangeHandler(e, el.id)}}
+                                  valid={el.config.valid}
+                                  touched={el.config.touched}
+                                  value={el.config.value}
+                    />;
+                })}
+                <div><button>Submit</button> {formInvalidMessage}</div>
+                {swappingButton} {logInFailed}
+            </form>
+        </div>
+    );
+};
 
 export default Form;

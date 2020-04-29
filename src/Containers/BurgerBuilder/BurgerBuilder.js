@@ -1,76 +1,63 @@
-import React, {Component, Fragment} from 'react';
+import React, {useState, useEffect, Fragment} from 'react';
 import classes from './BurgerBuilder.module.css';
 import Burger from "../../Components/Burger/Burger";
 import BuildControls from "../../Components/BuildControls/BuildControls";
 import CheckoutButton from "../../Components/UI/Buttons/CheckoutButton/CheckoutButton";
 import HoverMessage from "../HoverMessage/HoverMessage";
-import {connect} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import actions from '../../redux/actions/actions';
 import LoadingSpinner from "../../Components/UI/Spinner/LoadingSpinner";
 
-class BurgerBuilder extends Component {
-    state = {
-        purchasePressed: false,
+const BurgerBuilder = props => {
+    const [purchasePressed, setPurchasePressed] = useState(false);
+
+    const dispatch = useDispatch();
+    const addIngredient = (ingredientType) => dispatch(actions.BurgerBuilderActions.addIngredient(ingredientType));
+    const deleteIngredient = (ingredientType) => dispatch(actions.BurgerBuilderActions.deleteIngredient(ingredientType));
+    const loadingIngredients = () => dispatch(actions.BurgerBuilderActions.loading_ingredients());
+    const init_ingredients = () => dispatch(actions.BurgerBuilderActions.fetch_ingredients());
+
+    const ingredientsUpdated = useSelector(state => state.BurgerBuilder.ingredientsUpdated);
+    const ingredients = useSelector(state => state.BurgerBuilder.ingredients);
+    const INGREDIENT_PRICES = useSelector(state => state.BurgerBuilder.INGREDIENT_PRICES);
+    const totalPrice = useSelector(state => state.BurgerBuilder.totalPrice);
+    const error = useSelector(state => state.BurgerBuilder.error);
+
+    useEffect( () => {
+        loadingIngredients();
+        init_ingredients();
+    }, []);
+
+    const returnToOrderHandler = () => {
+        setPurchasePressed(!purchasePressed);
     };
 
-    componentDidMount() {
-        this.props.loadingIngredients();
-        this.props.init_ingredients();
-    }
+    return (
+        <div className={classes.Wrapper}>
+            {error ? <p>Sorry, something went wrong!</p> : !ingredientsUpdated ? <LoadingSpinner/> :
+                <Fragment>
+                    <Burger ingredients={ingredients}/>
+                    <BuildControls
+                        controls={ingredients}
+                        added={addIngredient}
+                        deleted={deleteIngredient}
+                        total={totalPrice}
+                        prices={INGREDIENT_PRICES}
+                    />
+                    <CheckoutButton
+                        text={"Order now"}
+                        clicked={returnToOrderHandler}
+                        inactive={totalPrice === 0}
+                    />
+                </Fragment>
 
-    returnToOrderHandler = () => {
-        this.setState(prevState => {
-           return {purchasePressed: !prevState.purchasePressed}
-        });
-    };
-
-    render(){
-        return (
-            <div className={classes.Wrapper}>
-                {this.props.error ? <p>Sorry, something went wrong!</p> : !this.props.ingredientsUpdated ? <LoadingSpinner/> :
-                    <Fragment>
-                        <Burger ingredients={this.props.ingredients}/>
-                        <BuildControls
-                            controls={this.props.ingredients}
-                            added={this.props.addIngredient}
-                            deleted={this.props.deleteIngredient}
-                            total={this.props.totalPrice}
-                            prices={this.props.INGREDIENT_PRICES}
-                        />
-                        <CheckoutButton
-                            text={"Order now"}
-                            clicked={this.returnToOrderHandler}
-                            inactive={this.props.totalPrice === 0}
-                        />
-                    </Fragment>
-
-                }
-                {this.state.purchasePressed ?
-                    <HoverMessage
-                        clicked={this.returnToOrderHandler}
-                    />: null}
-            </div>
-        )
-    }
-}
-
-const mapStateToProps = state => {
-    return {
-        ingredientsUpdated: state.BurgerBuilder.ingredientsUpdated,
-        ingredients: state.BurgerBuilder.ingredients,
-        INGREDIENT_PRICES: state.BurgerBuilder.INGREDIENT_PRICES,
-        totalPrice: state.BurgerBuilder.totalPrice,
-        error: state.BurgerBuilder.error
-    };
+            }
+            {purchasePressed ?
+                <HoverMessage
+                    clicked={returnToOrderHandler}
+                />: null}
+        </div>
+    );
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        addIngredient: (ingredientType) => dispatch(actions.BurgerBuilderActions.addIngredient(ingredientType)),
-        deleteIngredient: (ingredientType) => dispatch(actions.BurgerBuilderActions.deleteIngredient(ingredientType)),
-        loadingIngredients: () => dispatch(actions.BurgerBuilderActions.loading_ingredients()),
-        init_ingredients: () => dispatch(actions.BurgerBuilderActions.fetch_ingredients())
-    }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(BurgerBuilder);
+export default BurgerBuilder;
